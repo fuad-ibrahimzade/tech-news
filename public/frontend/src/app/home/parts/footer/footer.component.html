@@ -1,0 +1,69 @@
+<footer id="footer">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="footer-widget">
+                    <div class="footer-logo">
+                        <a routerLink="/" class="logo"><img src="/assets/img/logo.png" alt=""></a>
+                    </div>
+                    <ul class="footer-nav">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Advertisement</a></li>
+                    </ul>
+                    <div class="footer-copyright">
+								<span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. Technews.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">About Us</h3>
+                            <ul class="footer-links">
+                                <li><a routerLink="/about">About Us</a></li>
+                                <li><a href="#">Join Us</a></li>
+                                <li><a routerLink="/contacts">Contacts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">Catagories</h3>
+                            <ul class="footer-links">
+                                <ng-container *ngFor="let page of pages;let i = index">
+                                    <li *ngIf="page.name!=='News' && page.name!=='Popular'">
+                                        <a [routerLink]="['/category', page.name]" >{{page.name}}</a>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h3 class="footer-title">Join our Newsletter</h3>
+                    <div class="footer-newsletter">
+                        <form>
+                            <input class="input" type="email" name="newsletter" placeholder="Enter your email">
+                            <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                    <ul class="footer-social">
+                        <li><a href="{{social_links.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="{{social_links.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="{{social_links.telegram}}"><i class="fa fa-telegram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</footer>

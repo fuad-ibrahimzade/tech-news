@@ -1,0 +1,23 @@
+<div id="page-wrapper" style="min-height: 696px;">
+    <div class="row">
+        <h2 class="page-header">Update Contacts</h2>
+    </div>
+    <!-- Flash messages -->
+
+    <form class="" action="" method="post" enctype="multipart/form-data" (submit)="update_contacts($event)">
+
+        <fieldset>
+                
+            <div class="form-group">
+                <label for="editordata">Content *</label>
+                <textarea id="summernote" name="editordata" value="asas" placeholder="First Name" class="form-control" required="required">
+                </textarea>
+            </div>
+
+            <div class="form-group text-center">
+                <label></label>
+                <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+        </fieldset>
+    </form>
+</div>

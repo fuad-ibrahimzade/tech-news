@@ -1,0 +1,38 @@
+<div id="page-wrapper" style="min-height: 696px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Add Page</h2>
+        </div>
+
+    </div>
+    <!-- novalidate="novalidate"  -->
+    <form class="form" action="" method="post" id="customer_form" enctype="multipart/form-data" (submit)="create_page($event)">
+        <fieldset>
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" name="name" value="" placeholder="Name" class="form-control" required="required" id="name">
+            </div>
+
+            <div class="form-group">
+                <label>Show At Home *</label>
+                <select name="show_at_home" class="form-control selectpicker" required="required">
+                    <option value="0" selected="selected">False</option>
+                    <option value="1">True</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Showing Order *</label>
+                <input type="text" name="showing_order" placeholder="Showing Order" class="form-control" required="required" id="showing_order">
+
+            </div>
+
+            <div style="float:left">
+                <button  (click)="goBack()" class="fa fa-arrow-left fa-fw fa-lg btn btn-secondary" style="width: 50px" ></button>
+            </div>
+            <div class="form-group text-center">
+                <label></label>
+                <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+<div class="aside-widget">
+    <div class="section-title">
+        <h2>Catagories</h2>
+    </div>
+    <div class="category-widget" >
+        <ul>
+            <ng-container *ngFor="let page of this.homeIndex.pages;let i = index">
+                <li *ngIf="page.name!=='News' && page.name!=='Popular'">
+                    <a class="cat-{{page.id+4}}" [routerLink]="['/category', page.name]" >{{page.name}}<span>{{page.posts_count}}</span></a>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</div>

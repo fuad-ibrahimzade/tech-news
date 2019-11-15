@@ -1,0 +1,120 @@
+
+<div id="page-wrapper" style="max-height: 696px;" *ngIf="!posts">
+    <img src="/assets/images/loading.gif" style="display: block;height: 50px;margin-left: auto;margin-right: auto">
+</div>
+<div id="page-wrapper" style="min-height: 696px;" *ngIf="posts">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="page-header">Posts</h1>
+        </div>
+        <div class="col-lg-6">
+            <div class="page-action-links text-right">
+                <a href="/dashboard/create-post" routerLink='/dashboard/create-post' class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add new</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="well text-center filter-form">
+        <form class="form form-inline" action="" (submit)="filter_search($event)">
+            <label for="input_search">Search</label>
+            <input type="text" class="form-control" id="input_search" name="search_string" value="">
+            <label for="input_order">Order By</label>
+            <select name="filter_col" class="form-control">
+                <option value="id">ID</option>
+                <option value="post_category">Post Category</option>
+                <option value="post_title">Post Title</option>
+                <option value="post_tags">Post Tags</option>
+                <option value="author_name">Author Name</option>
+                <option value="date_upd">Update Date</option>
+                <option value="date_add">Created Date</option>
+            </select>
+            <select name="order_by" class="form-control" id="input_order">
+                <option value="Asc">Asc</option>
+                <option value="Desc">Desc</option>
+            </select>
+            <input type="submit" value="Go" class="btn btn-primary">
+        </form>
+    </div>
+    <hr>
+    <!-- //Filters -->
+
+    <!-- Table -->
+    <div class="modal fade" id="confirm-delete-0" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+            <form action="/dashboard/delete-post" method="POST" (submit)="delete_post($event)">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="del_id" id="del_id" value="">
+                        <p>Are you sure you want to delete this row?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default pull-left">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+     
+    <div style="max-width: 1200px;overflow-y: scroll">
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="chk_main" value="" (click)="click_all()"/></th>
+                <th width="5%">ID</th>
+                <th width="20%">Post Category</th>
+                <th width="45%">Post Title</th>
+                <th width="20%">Post Tags</th>
+
+                <th>Author Name</th>
+                <th>Author Picture</th>
+                <th>Updated Date</th>
+                <th>Created Date</th>
+                <th width="10%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- //Delete Confirmation Modal -->
+            <tr *ngFor="let post of posts | paginate: pagination_config">
+                <td><input type="checkbox" name="chk_group[]" value="{{post.id}}"/></td>
+                <td>{{post.id}}</td>
+                <td>{{post.post_category}}</td>
+                <td>{{post.post_title}}</td>
+                <td>{{post.post_tags}}</td>
+                
+                <td>{{post.author_name}}</td>
+                <td>{{post.author_picture}}</td>
+                <td>{{post.date_upd}}</td>
+                <td>{{post.date_add}}</td>
+                <td>
+                    <a href="/dashboard/update-post" [routerLink]="['/dashboard/update-post', post.id]" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                    <!-- data-toggle="modal" data-target="#confirm-delete-0" -->
+                    <input type="button" style="display: none" id="realdelete" data-toggle="modal" data-target="#confirm-delete-0">
+                    <a href="#" class="btn btn-danger delete_btn"  (click)="set_delete_id(post.id)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+            </tr>
+            <!-- Delete Confirmation Modal -->
+        
+            <!-- //Delete Confirmation Modal -->
+            </tbody>
+        </table>
+    </div>
+    <!-- //Table -->
+    <div class="text-center">
+
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+
+
+
+
+
+
+</div>

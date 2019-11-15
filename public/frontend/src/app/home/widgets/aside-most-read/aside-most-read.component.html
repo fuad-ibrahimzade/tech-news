@@ -1,0 +1,15 @@
+<div class="aside-widget">
+    <div class="section-title">
+        <h2>Most Read</h2>
+    </div>
+
+    <ng-container *ngFor="let post of this.homeIndex.popular_posts;let i = index">
+        <div class="post post-widget" *ngIf="post.index<4">
+            <a class="post-img" [routerLink]="['/blog-post', post.id]"><img src="{{post.post_picture}}" alt=""></a>
+            <div class="post-body">
+                <h3 class="post-title"><a [routerLink]="['/blog-post', post.id]">{{post.post_title}}</a></h3>
+            </div>
+        </div>
+    </ng-container>
+
+</div>

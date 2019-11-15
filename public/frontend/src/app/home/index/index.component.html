@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<home-head></home-head>
+<body>
+<!-- Header -->
+<header id="header">
+    <!-- Nav -->
+    <home-nav></home-nav>
+    <!-- /Nav -->
+
+    <div id="page-header"></div>
+
+    <!-- Page Header -->
+    <div class="page-header" *ngIf="this.router.url==='/popular' || this.router.url==='/news'">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="page-header-breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li>{{this.router.url==='/popular'?'Popular':'News'}}</li>
+                    </ul>
+                    <h1>{{this.router.url==='/popular'?'Popular':'News'}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <!-- Page Header -->
+    <div class="page-header" *ngIf="this.router.url.indexOf('/category')>-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="page-header-breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="post_category">JavaScript</li>
+                    </ul>
+                    <h1 class="post_category">JavaScript</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <!-- Page Header -->
+    <!-- <div id="post-header" class="page-header" *ngIf="this.router.url.indexOf('/blog-post/')>-1">
+        <div class="background-img" style="background-image: url('./img/post-page.jpg');"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="post-meta">
+                        <a class="post-category cat-2" href="category.html">JavaScript</a>
+                        <span class="post-date">March 27, 2018</span>
+                    </div>
+                    <h1 class="post-title">Ask HN: Does Anybody Still Use JQuery?</h1>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- /Page Header -->
+
+    <!-- Page Header -->
+    <div class="page-header" *ngIf="this.router.url==='/about'">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="page-header-breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li>About Us</li>
+                    </ul>
+                    <h1>About Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <!-- Page Header -->
+    <div class="page-header" *ngIf="this.router.url==='/contacts'">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <ul class="page-header-breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Contact</li>
+                    </ul>
+                    <h1>Contact</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+</header>
+<!-- /Header -->
+
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<home-footer></home-footer>
+<!-- /Footer -->
+
+</body>
+</html>

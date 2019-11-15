@@ -1,0 +1,177 @@
+<ng-container id="all_comments">
+<!-- comments -->
+<div class="section-row" *ngIf="postID && postID!=='-1' && comments" id='parent_comments'>
+    <div class="section-title">
+        <h2>{{comments.length>1? comments.length+' Comments' : comments.length+' Comment' }}</h2>
+    </div>
+
+    <div class="post-comments">
+        <ng-container *ngFor="let comment of comments">
+            <!-- comment -->
+            <div class="media" *ngIf="!comment.parent_comment_id || (comment.parent_comment_id && comment.parent_comment_id==='-1')">
+                <div class="media-left">
+                    <img class="media-object" src="{{defaultCommentorProfilePicture}}" alt="">
+                </div>
+                <div class="media-body">
+                    <div>
+                        <div class="media-heading">
+                            <h4>{{comment.name}}</h4>
+                            <span class="time">{{comment.date_add | date}}</span>
+                            <a href="#" class="reply" (click)="create_comment($event,comment.id,'button')">Reply</a>
+                        </div>
+                        <p>{{comment.message}}</p>
+
+                        <!-- reply -->
+                        <div class="section-row" *ngIf="postID && postID!=='-1'" style="display: none;">
+                            <div class="section-title">
+                                <h2>
+                                    <span>Leave a reply</span>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <span *ngIf="comment.id">&#8624;</span>
+
+                                    <button type="button" class="close" id="reply_close" style='color: #000;' (click)="hide_reply_forn($event)">X</button>
+                                </h2>
+                                <p>your email address will not be published. required fields are marked *</p>
+                            </div>
+                            <form class="post-reply" method='post' (submit)="create_comment($event,comment.id)">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <span>Name *</span>
+                                            <input class="input" type="text" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <span>Email *</span>
+                                            <input class="input" type="email" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea class="input" name="message" placeholder="Message"></textarea>
+                                        </div>
+                                        <button class="primary-button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /reply -->
+                    </div>
+
+                    <ng-container *ngIf="comment.child_comment_ids && comment.child_comment_ids.length>0">
+                        <ng-container *ngFor="let child_comment_id of comment.child_comment_ids">
+                            <home-comments childCommentID="{{child_comment_id}}"></home-comments>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- /comment -->
+        </ng-container>
+
+    </div>
+</div>
+<!-- /comments -->
+
+<ng-container *ngIf="childCommentID && child_comment">
+    <!-- <ng-container *ngFor="let comment of comments"> -->
+        <!-- comment -->
+        <div class="media">
+            <div class="media-left">
+                <img class="media-object" src="{{defaultCommentorProfilePicture}}" alt="">
+            </div>
+            <div class="media-body">
+                <div>
+                    <div class="media-heading">
+                        <h4>{{child_comment.name}}</h4>
+                        <span class="time">{{child_comment.date_add | date}}</span>
+                        <a href="#" class="reply" (click)="create_comment($event,child_comment.id,'button')">Reply</a>
+                    </div>
+                    <p>{{child_comment.message}}</p>
+
+                    <!-- reply -->
+                    <div class="section-row" *ngIf="postID && postID!=='-1'" style="display: none;">
+                        <div class="section-title">
+                            <h2>
+                                <span>Leave a reply</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span *ngIf="child_comment.id">&#8624;</span>
+
+                                <button type="button" class="close" id="reply_close" style='color: #000;' (click)="hide_reply_forn($event)">X</button>
+                            </h2>
+                            <p>your email address will not be published. required fields are marked *</p>
+                        </div>
+                        <form class="post-reply" method='post' (submit)="create_comment($event,child_comment.id)">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <span>Name *</span>
+                                        <input class="input" type="text" name="name">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <span>Email *</span>
+                                        <input class="input" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="input" name="message" placeholder="Message"></textarea>
+                                    </div>
+                                    <button class="primary-button">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /reply -->
+                </div>
+
+                <ng-container *ngIf="child_comment.child_comment_ids && child_comment.child_comment_ids.length>0">
+                    <ng-container *ngFor="let child_comment_id of child_comment.child_comment_ids">
+                        <home-comments childCommentID="{{child_comment_id}}"></home-comments>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+        <!-- /comment -->
+    <!-- </ng-container> -->
+</ng-container>
+</ng-container>
+
+<!-- reply -->
+<div class="section-row" *ngIf="postID && postID!=='-1' && comments">
+    <div class="section-title">
+        <h2>
+            <span>Leave a reply</span>
+            &nbsp;&nbsp;&nbsp;
+            <!-- <span *ngIf="reply_comment_id">&#8624;</span> -->
+
+            <button type="button" class="close" id="reply_close" style='color: #000;display: none' (click)="hide_reply_forn($event)">X</button>
+        </h2>
+        <p>your email address will not be published. required fields are marked *</p>
+    </div>
+    <form class="post-reply" method='post' (submit)="create_comment($event,null)" id="mainform">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <span>Name *</span>
+                    <input class="input" type="text" name="name">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <span>Email *</span>
+                    <input class="input" type="email" name="email">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea class="input" name="message" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="primary-button">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /reply -->

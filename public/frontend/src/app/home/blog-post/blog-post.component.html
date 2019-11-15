@@ -1,0 +1,87 @@
+<div *ngIf="!post">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Post content -->
+            <div class="col-md-8">
+                <div class="section-row sticky-container">
+                    <div class="main-post" id="summerNoteData">
+                    </div>
+                    <div class="post-shares sticky-shares">
+                        <a [routerLink]="[this.router.url]" class="share-facebook" shareButton="facebook"><i class="fa fa-facebook"></i></a>
+                        <a [routerLink]="[this.router.url]" class="share-twitter" shareButton="twitter"><i class="fa fa-twitter"></i></a>
+                        <a [routerLink]="[this.router.url]" class="share-telegram" shareButton="telegram"><i class="fa fa-telegram"></i></a>
+                        <a [routerLink]="[this.router.url]" class="share-linkedin" shareButton="linkedin"><i class="fa fa-linkedin"></i></a>
+                        <a [routerLink]="[this.router.url]" (click)="send_mail()"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- ad -->
+                <app-aside-add adNumber="2"></app-aside-add>
+                <!-- ad -->
+
+                <!-- author -->
+                <div class="section-row" *ngIf="post">
+                    <div class="post-author">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="/assets/img/author.png" alt="">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h3>{{post.author_name}}</h3>
+                                </div>
+                                <p>{{post.author_desc}}</p>
+                                <ul class="author-social">
+                                    <li><a href="{{post.author_social_links.facebook?post.author_social_links.facebook:'#'}}"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{post.author_social_links.twitter?post.author_social_links.twitter:'#'}}"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{post.author_social_links.instagram?post.author_social_links.instagram:'#'}}"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /author -->
+
+            <home-comments postID={{this.id}}></home-comments>
+            </div>
+            <!-- /Post content -->
+
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- ad -->
+                <app-aside-add adNumber="1"></app-aside-add>
+                <!-- /ad -->
+
+                <!-- post widget -->
+                <app-aside-most-read></app-aside-most-read>
+                <!-- /post widget -->
+
+                <!-- post widget -->
+                <app-aside-featured-posts></app-aside-featured-posts>
+                <!-- /post widget -->
+
+                <!-- catagories -->
+                <app-aside-categories></app-aside-categories>
+                <!-- /catagories -->
+
+                <!-- tags -->
+                <app-aside-tags></app-aside-tags>
+                <!-- /tags -->
+
+                <!-- archive -->
+                <app-aside-archive></app-aside-archive>
+                <!-- /archive -->
+            </div>
+            <!-- /aside -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->

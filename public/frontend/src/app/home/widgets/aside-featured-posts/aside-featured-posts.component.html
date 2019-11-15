@@ -1,0 +1,17 @@
+<div class="aside-widget" *ngIf="featured_posts">
+    <div class="section-title">
+        <h2>Random Posts</h2>
+    </div>
+    <ng-container *ngFor="let post of featured_posts; let i = index">
+        <div class="post post-thumb">
+            <a class="post-img" [routerLink]="['/blog-post', post.id]"><img src="{{post.post_picture}}" alt=""></a>
+            <div class="post-body">
+                <div class="post-meta">
+                    <a class="post-category cat-{{get_color_id(post.post_category)}}" [routerLink]="['/category', post.post_category]">{{post.post_category}}</a>
+                    <span class="post-date">{{post.date_add | date }}</span>
+                </div>
+                <h3 class="post-title"><a [routerLink]="['/blog-post', post.id]">{{post.post_title}}</a></h3>
+            </div>
+        </div>
+    </ng-container>
+</div>

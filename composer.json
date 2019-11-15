@@ -1,0 +1,23 @@
+{
+    "name": "technews/technews",
+    "description": "website",
+    "authors": [
+        {
+            "name": "Fuad Ibrahimzade",
+            "email": "fuad.ibrahimzada@gmail.com"
+        }
+    ],
+    "require": {
+		"php": ">=7.3.6",
+        "twig/twig": "~2.0",
+        "nesbot/carbon": "^2.25",
+        "firebase/php-jwt": "^5.0",
+        "cloudinary/cloudinary_php": "^1.15"
+    },
+    "autoload": {
+        "psr-4": {
+             "Core\\": "Core/",
+             "App\\": "App/"
+        }
+    }
+}

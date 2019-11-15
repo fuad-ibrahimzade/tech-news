@@ -1,0 +1,71 @@
+<div id="nav">
+    <!-- Main Nav -->
+    <div id="nav-fixed">
+        <div class="container">
+            <!-- logo -->
+            <div class="nav-logo">
+                <a routerLink="/" class="logo"><img src="{{baseUrlForAssets+'/assets/img/logo.png'}}" style="height: auto;width: auto" alt=""></a>
+            </div>
+            <!-- /logo -->
+
+            <!-- nav -->
+            <ul class="nav-menu nav navbar-nav">
+                <ng-container *ngFor="let page of pages;let i = index">
+                    <li *ngIf="page.name==='News'">
+                        <a routerLink="/news" >News</a>
+                    </li>
+                    <li *ngIf="page.name==='Popular'">
+                        <a routerLink="/popular" >Popular</a>
+                    </li>
+                    <li class="cat-{{page.id+4}}" *ngIf="page.name!=='News' && page.name!=='Popular'">
+                        <a [routerLink]="['/category', page.name]">{{page.name}}</a>
+                    </li>
+                </ng-container>
+            </ul>
+            <!-- /nav -->
+
+            <!-- search & aside toggle -->
+            <div class="nav-btns">
+                <button class="aside-btn"><i class="fa fa-bars"></i></button>
+                <button class="search-btn"><i class="fa fa-search"></i></button>
+                <div class="search-form">
+                    <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
+                    <button class="search-close"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /search & aside toggle -->
+        </div>
+    </div>
+    <!-- /Main Nav -->
+
+    <!-- Aside Nav -->
+    <div id="nav-aside">
+        <!-- nav -->
+        <div class="section-row">
+            <ul class="nav-aside-menu">
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/about">About Us</a></li>
+                <li><a href="#">Join Us</a></li>
+                <li><a href="#">Advertisement</a></li>
+                <li><a routerLink="/contacts">Contacts</a></li>
+            </ul>
+        </div>
+        <!-- /nav -->
+
+        <!-- social links -->
+        <div class="section-row">
+            <h3>Follow us</h3>
+            <ul class="nav-aside-social">
+                <li><a href="{{social_links.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="{{social_links.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{social_links.telegram}}"><i class="fa fa-telegram"></i></a></li>
+            </ul>
+        </div>
+        <!-- /social links -->
+
+        <!-- aside nav close -->
+        <button class="nav-aside-close"><i class="fa fa-times"></i></button>
+        <!-- /aside nav close -->
+    </div>
+    <!-- Aside Nav -->
+</div>

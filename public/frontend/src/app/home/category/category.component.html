@@ -1,0 +1,121 @@
+<div *ngIf="!posts">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<!-- section -->
+<div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row" *ngIf="posts">
+                        <ng-container *ngFor="let post of posts; let i = index">
+                            <!-- post -->
+                            <div class="col-md-12" *ngIf="post.index==0">
+                                <div class="post post-thumb">
+                                    <a class="post-img" [routerLink]="['/blog-post', post.id]"><img src="{{post.post_picture}}" alt=""></a>
+                                    <div class="post-body">
+                                        <div class="post-meta">
+                                            <a class="post-category cat-{{category_color_id}}" [routerLink]="['/category', post.post_category]">{{post.post_category}}</a>
+                                            <span class="post-date">{{post.date_add | date }}</span>
+                                        </div>
+                                        <h3 class="post-title"><a [routerLink]="['/blog-post', post.id]">{{post.post_title}}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /post -->
+        
+                            <ng-container *ngIf="post.index==1">
+                                <!-- post -->
+                                <div class="col-md-6">
+                                    <div class="post">
+                                        <a class="post-img" [routerLink]="['/blog-post', posts[post.index].id]"><img src="{{posts[post.index].post_picture}}" alt=""></a>
+                                        <div class="post-body">
+                                            <div class="post-meta">
+                                                <a class="post-category cat-{{category_color_id}}" [routerLink]="['/category', posts[post.index].post_category]">{{posts[post.index].post_category}}</a>
+                                                <span class="post-date">{{posts[post.index].date_add | date }}</span>
+                                            </div>
+                                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[post.index].id]">{{posts[post.index].post_title}}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /post -->
+            
+                                <!-- post -->
+                                <div class="col-md-6" >
+                                    <div class="post">
+                                        <a class="post-img" [routerLink]="['/blog-post', posts[post.index+1].id]"><img src="{{posts[post.index+1].post_picture}}" alt=""></a>
+                                        <div class="post-body">
+                                            <div class="post-meta">
+                                                <a class="post-category cat-{{category_color_id}}" [routerLink]="['/category', posts[post.index+1].post_category]">{{posts[post.index+1].post_category}}</a>
+                                                <span class="post-date">{{posts[post.index+1].date_add | date }}</span>
+                                            </div>
+                                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[post.index+1].id]">{{posts[post.index+1].post_title}}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /post -->
+
+                                <div class="clearfix visible-md visible-lg"></div>
+        
+                                <!-- ad -->
+                                <div class="col-md-12">
+                                    <app-aside-add adNumber="2"></app-aside-add>
+                                </div>
+                                <!-- ad -->
+                            </ng-container>
+
+                            <!-- post -->
+                            <div class="col-md-12" *ngIf="post.index>2 && post.index<=loadLimitIndex">
+                                <div class="post post-row">
+                                    <a class="post-img" [routerLink]="['/blog-post', post.id]"><img src="{{post.post_picture}}" alt=""></a>
+                                    <div class="post-body">
+                                        <div class="post-meta">
+                                            <a class="post-category cat-{{category_color_id}}" [routerLink]="['/category', post.post_category]">{{post.post_category}}</a>
+                                            <span class="post-date">{{post.date_add | date }}</span>
+                                        </div>
+                                        <h3 class="post-title"><a [routerLink]="['/blog-post', post.id]">{{post.post_title}}</a></h3>
+                                        <p>{{post.post_desc}}...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /post -->
+                        </ng-container>
+    
+                        <div class="col-md-12">
+                            <div class="section-row">
+                                <button id='load_more_button' class="primary-button center-block" (click)="load_more()">Load More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-4">
+                    <!-- ad -->
+                    <div class="aside-widget text-center">
+                        <app-aside-add adNumber="1"></app-aside-add>
+                    </div>
+                    <!-- /ad -->
+    
+                    <!-- post widget -->
+                    <app-aside-most-read></app-aside-most-read>
+                    <!-- /post widget -->
+    
+                    <!-- catagories -->
+                    <app-aside-categories></app-aside-categories>
+                    <!-- /catagories -->
+    
+                    <!-- tags -->
+                    <app-aside-tags></app-aside-tags>
+                    <!-- /tags -->
+    
+                    <!-- archive -->
+                    <app-aside-archive></app-aside-archive>
+                    <!-- /archive -->
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->

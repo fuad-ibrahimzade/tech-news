@@ -1,0 +1,82 @@
+<div id="page-wrapper" style="min-height: 696px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Add Post</h2>
+        </div>
+
+    </div>
+    <form class="form" action="" method="post" id="cpForm" enctype="multipart/form-data" (submit)="create_post($event)">
+        <fieldset>
+            <div class="form-group" *ngIf="pages">
+                <label>Post Category(Page) *</label>
+                <select name="post_category" class="form-control selectpicker" required="">
+                    <ng-container *ngFor="let page of pages">
+                        <option value="{{page.name}}">{{page.name}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="post_title">Post Title *</label>
+                <input type="text" name="post_title" value="" placeholder="Post Title" class="form-control" required="required" id="post_title">
+            </div>
+
+            <div class="form-group">
+                <label for="post_tags">Post Tags *</label>
+                <textarea name="post_tags" placeholder="please make space between tags" class="form-control" id="post_tags"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="" for="post_picture">Post Picture</label>
+                <img class="thumb_post_picture" src="{{defaultPictureSRC}}" style="height: 100px;display: block;">
+                <br>
+                <input type="file" class="post_picture" id="post_picture" name="post_picture" (change)="change_picture($event,'post_picture')">
+            </div>
+
+            
+
+            <div class="form-group">
+                <label for="summernote">Post Content *</label>
+                <br/><progress style="display: none"></progress>
+                <textarea id="summernote" name="editordata" value="asas" placeholder="First Name" class="form-control" required="required">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="post_desc">Post Description</label>
+                <textarea name="post_desc" placeholder="Post Description" class="form-control" id="post_desc"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="author_name">Author name *</label>
+                <input type="text" name="author_name" value="" placeholder="Author Name" class="form-control" required="required" id="author_name">
+            </div>
+            
+            <div class="form-group">
+                <label for="author_desc">Author Description</label>
+                <textarea name="author_desc" placeholder="Author Description" class="form-control" id="author_desc"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="" for="author_picture">Author Picture</label>
+                <img class="thumb_author_picture" src="{{defaultPictureSRC}}" style="height: 100px;display: block;"/>
+                <br>
+                <input type="file" class="author_picture" id="author_picture" name="author_picture" (change)="change_picture($event,'author_picture')">
+            </div>
+
+            <div class="form-group">
+                <label for="author_social_links">Author Social Profiles</label>
+                <input type="text" name="asl_facebook" value="" placeholder="paste facebook link here" class="form-control" id="facebook">
+                <input type="text" name="asl_twitter" value="" placeholder="paste twitter link here" class="form-control" id="twitter">
+                <input type="text" name="asl_instagram" value="" placeholder="paste instagram link here" class="form-control" id="instagram">
+            </div>
+
+            <div style="float:left">
+                <button  (click)="goBack()" class="fa fa-arrow-left fa-fw fa-lg btn btn-secondary" style="width: 50px" ></button>
+            </div>
+            <div class="form-group text-center">
+                <label></label>
+                <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+        </fieldset>
+    </form>
+</div>

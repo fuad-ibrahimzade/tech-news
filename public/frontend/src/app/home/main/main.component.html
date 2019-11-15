@@ -1,0 +1,339 @@
+<div *ngIf="!featured_posts || !posts">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<!-- section -->
+<div class="section" *ngIf="this.router.url==='/home'">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <ng-container *ngIf="featured_posts" >
+            <!-- <ng-container *ngFor="let post of featured_posts"> -->
+            <!-- post -->
+            <div class="col-md-6">
+                <div class="post post-thumb">
+                    <a class="post-img" [routerLink]="['/blog-post', featured_posts[0].id]"><img src="{{featured_posts[0].post_picture}}" alt=""></a>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-{{get_color_id(featured_posts[0].post_category)}}" [routerLink]="['/category', featured_posts[0].post_category]">{{featured_posts[0].post_category}}</a>
+                            <span class="post-date">{{featured_posts[0].date_add | date }}</span>
+                        </div>
+                        <h3 class="post-title"><a [routerLink]="['/blog-post', featured_posts[0].id]">{{featured_posts[0].post_title}}</a></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /post -->
+
+            <!-- post -->
+            <div class="col-md-6">
+                <div class="post post-thumb">
+                    <a class="post-img" [routerLink]="['/blog-post', featured_posts[1].id]"><img src="{{featured_posts[1].post_picture}}" alt=""></a>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-{{get_color_id(featured_posts[1].post_category)}}" [routerLink]="['/category', featured_posts[1].post_category]">{{featured_posts[1].post_category}}</a>
+                            <span class="post-date">{{featured_posts[1].date_add | date }}</span>
+                        </div>
+                        <h3 class="post-title"><a [routerLink]="['/blog-post', featured_posts[1].id]">{{featured_posts[1].post_title}}</a></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /post -->
+            <!-- </ng-container> -->
+            </ng-container>
+        </div>
+        <!-- /row -->
+
+        <ng-container *ngIf="posts" >
+        <ng-container *ngFor="let post of posts; let i = index">
+        <ng-container *ngIf="i===0">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Recent Posts</h2>
+                    </div>
+                </div>
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', post.id]"><img src="{{post.post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(post.post_category)}}" [routerLink]="['/category', post.post_category]">{{post.post_category}}</a>
+                                <span class="post-date">{{post.date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', post.id]">{{post.post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', posts[1].id]"><img src="{{posts[1].post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(posts[1].post_category)}}" [routerLink]="['/category', posts[1].post_category]">{{posts[1].post_category}}</a>
+                                <span class="post-date">{{posts[1].date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[1].id]">{{posts[1].post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', posts[2].id]"><img src="{{posts[2].post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(posts[2].post_category)}}" [routerLink]="['/category', posts[2].post_category]">{{posts[2].post_category}}</a>
+                                <span class="post-date">{{posts[2].date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[2].id]">{{posts[2].post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+                <div class="clearfix visible-md visible-lg"></div>
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', posts[3].id]"><img src="{{posts[3].post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(posts[3].post_category)}}" [routerLink]="['/category', posts[3].post_category]">{{posts[3].post_category}}</a>
+                                <span class="post-date">{{posts[3].date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[3].id]">{{posts[3].post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', posts[4].id]"><img src="{{posts[4].post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(posts[4].post_category)}}" [routerLink]="['/category', posts[4].post_category]">{{posts[4].post_category}}</a>
+                                <span class="post-date">{{posts[4].date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[4].id]">{{posts[4].post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+
+                <!-- post -->
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" [routerLink]="['/blog-post', posts[5].id]"><img src="{{posts[5].post_picture}}" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-{{get_color_id(posts[5].post_category)}}" [routerLink]="['/category', posts[5].post_category]">{{posts[5].post_category}}</a>
+                                <span class="post-date">{{posts[5].date_add | date }}</span>
+                            </div>
+                            <h3 class="post-title"><a [routerLink]="['/blog-post', posts[5].id]">{{posts[5].post_title}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /post -->
+            </div>
+            <!-- /row -->
+
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <!-- post -->
+                        <div class="col-md-12">
+                            <div class="post post-thumb">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[6].id]"><img src="{{posts[6].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[6].post_category)}}" [routerLink]="['/category', posts[6].post_category]">{{posts[6].post_category}}</a>
+                                        <span class="post-date">{{posts[6].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[6].id]">{{posts[6].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[7].id]"><img src="{{posts[7].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[7].post_category)}}" [routerLink]="['/category', posts[7].post_category]">{{posts[7].post_category}}</a>
+                                        <span class="post-date">{{posts[7].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[7].id]">{{posts[7].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[8].id]"><img src="{{posts[8].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[8].post_category)}}" [routerLink]="['/category', posts[8].post_category]">{{posts[8].post_category}}</a>
+                                        <span class="post-date">{{posts[8].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[8].id]">{{posts[8].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <div class="clearfix visible-md visible-lg"></div>
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[9].id]"><img src="{{posts[9].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[9].post_category)}}" [routerLink]="['/category', posts[9].post_category]">{{posts[9].post_category}}</a>
+                                        <span class="post-date">{{posts[9].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[9].id]">{{posts[9].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[10].id]"><img src="{{posts[10].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[10].post_category)}}" [routerLink]="['/category', posts[10].post_category]">{{posts[10].post_category}}</a>
+                                        <span class="post-date">{{posts[10].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[10].id]">{{posts[10].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <div class="clearfix visible-md visible-lg"></div>
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[11].id]"><img src="{{posts[11].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[11].post_category)}}" [routerLink]="['/category', posts[11].post_category]">{{posts[11].post_category}}</a>
+                                        <span class="post-date">{{posts[11].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[11].id]">{{posts[11].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+
+                        <!-- post -->
+                        <div class="col-md-6">
+                            <div class="post">
+                                <a class="post-img" [routerLink]="['/blog-post', posts[12].id]"><img src="{{posts[12].post_picture}}" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-meta">
+                                        <a class="post-category cat-{{get_color_id(posts[12].post_category)}}" [routerLink]="['/category', posts[12].post_category]">{{posts[12].post_category}}</a>
+                                        <span class="post-date">{{posts[12].date_add | date }}</span>
+                                    </div>
+                                    <h3 class="post-title"><a [routerLink]="['/blog-post', posts[12].id]">{{posts[12].post_title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /post -->
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- post widget -->
+                    <app-aside-most-read></app-aside-most-read>
+                    <!-- /post widget -->
+
+                    <!-- post widget -->
+                    <app-aside-featured-posts></app-aside-featured-posts>
+                    <!-- /post widget -->
+
+                    <!-- ad -->
+                    <app-aside-add adNumber="1"></app-aside-add>
+                    <!-- /ad -->
+                </div>
+            </div>
+            <!-- /row -->
+        </ng-container>
+        </ng-container>
+        </ng-container>
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+<!-- section -->
+<div class="section section-grey" *ngIf="false&&this.router.url==='/home'">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- catagories -->
+                <app-aside-categories></app-aside-categories>
+                <!-- /catagories -->
+
+                <!-- tags -->
+                <app-aside-tags></app-aside-tags>
+                <!-- /tags -->
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+<!-- section -->
+<div class="section" *ngIf="this.router.url==='/home'">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="col-md-8">
+                    <!-- ad -->
+                    <app-aside-add adNumber="2"></app-aside-add>
+                    <!-- /ad -->
+                </div>
+                <div class="col-md-4">
+                    <!-- catagories -->
+                    <app-aside-categories></app-aside-categories>
+                    <!-- /catagories -->
+
+                    <!-- tags -->
+                    <app-aside-tags></app-aside-tags>
+                    <!-- /tags -->
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
